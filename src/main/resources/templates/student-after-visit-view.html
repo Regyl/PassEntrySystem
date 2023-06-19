@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div align="center">
+    <a th:text="${student.getLFM()}"/>
+    <img class='img-thumbnail' th:src="'data:image/jpeg;base64,' + ${photo}" />
+    <form th:action="@{/}">
+        <input type="submit" value="Вернуться на главную" />
+    </form>
+</div>
+</body>
+</html>

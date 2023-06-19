@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="icon" href="logo_flagstripe_ministryeagle_ministry_eagle_rut_2.svg">
+</head>
+<body>
+<form th:action="@{/}">
+    <input type="submit" value="На главную" />
+</form>
+<th:block th:if="${entities== null || entities.isEmpty()}">
+    No response available
+</th:block>
+<div align="center">
+    <table th:border="1">
+        <thead>
+        <tr>
+            <th> Взвод </th>
+            <th> ФИО </th>
+            <th> Присутствие </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="entity : ${entities}">
+            <td><span th:text="${entity.getStudentGroup().getNumber()}"/> </td>
+            <td><span th:text="${entity.getLFM()}"/></td>
+            <td><span th:text="${entity.getTodayVisit().isPresent() ? entity.getTodayVisit().get().getVisitDateTime() : 'Отсутствует'}"/></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

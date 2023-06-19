@@ -1,0 +1,11 @@
+server:
+  port: 8090
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/pass-entry
+    username: idk
+    password: SomeUselessPassword02
+  jpa:
+    hibernate:
+      ddl-auto: update
