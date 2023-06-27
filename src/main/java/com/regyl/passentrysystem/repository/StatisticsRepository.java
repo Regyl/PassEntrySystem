@@ -17,5 +17,5 @@ public interface StatisticsRepository extends AbstractRepository<AbstractEntity>
 
 
     @Query("select s from Student s left join VisitRecord v on s.id = v.student.id order by s.studentGroup.number desc")
-    List<Student> getPagedStatistics();
+    List<Student> getAllStudents();
 }

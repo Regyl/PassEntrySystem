@@ -10,10 +10,12 @@ import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.time.OffsetDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Data
 @Entity
@@ -21,8 +23,10 @@ import java.time.OffsetDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "visit")
-public class VisitRecord
-        extends AbstractEntity {
+@EqualsAndHashCode(callSuper = true)
+public class VisitRecord extends AbstractEntity {
+
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("HH:mm:SS");
 
     /**
      * idk.
@@ -39,4 +43,8 @@ public class VisitRecord
 
     @ManyToOne(optional = false)
     private Student student;
+
+    public String getFormattedVisitTime() {
+        return FORMATTER.format(visitDateTime);
+    }
 }

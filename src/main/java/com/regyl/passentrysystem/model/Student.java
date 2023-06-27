@@ -1,5 +1,6 @@
 package com.regyl.passentrysystem.model;
 
+import com.regyl.passentrysystem.service.csv.CsvBuilderImpl;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
@@ -12,6 +13,7 @@ import lombok.NoArgsConstructor;
 
 import java.time.Clock;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,9 +40,9 @@ public class Student extends AbstractEntity {
         return this.fullName != null ? fullName.getFullName() : "Empty";
     }
 
-    public Optional<VisitRecord> getTodayVisit() {
+    public Optional<String> getTodayVisit() {
         return visits == null ? Optional.empty() : visits.stream()
                 .filter(item -> item.getVisitDateTime().toLocalDate().equals(LocalDate.now(Clock.systemUTC())))
-                .findFirst();
+                .findFirst().map(VisitRecord::getFormattedVisitTime);
     }
 }

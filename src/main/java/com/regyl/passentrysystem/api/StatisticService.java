@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface StatisticService {
 
-    List<Student> getPagedStatistics();
+    List<Student> getAllStudents();
 
     byte[] downloadFullStatistics();
 }

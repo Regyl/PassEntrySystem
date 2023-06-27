@@ -18,14 +18,14 @@
         <tr>
             <th> Взвод </th>
             <th> ФИО </th>
-            <th> Присутствие </th>
+            <th> Прибытие </th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="entity : ${entities}">
             <td><span th:text="${entity.getStudentGroup().getNumber()}"/> </td>
             <td><span th:text="${entity.getLFM()}"/></td>
-            <td><span th:text="${entity.getTodayVisit().isPresent() ? entity.getTodayVisit().get().getVisitDateTime() : 'Отсутствует'}"/></td>
+            <td><span th:text="${entity.getTodayVisit().isPresent() ? entity.getTodayVisit().get() : 'Отсутствует'}"/></td>
         </tr>
         </tbody>
     </table>

@@ -20,7 +20,7 @@ public class StatisticController {
     public ModelAndView getFullPagedStatistics() {
         ModelAndView mav = new ModelAndView("statistics-table");
         var attributes = mav.getModel();
-        attributes.put("entities", statisticService.getPagedStatistics());
+        attributes.put("entities", statisticService.getAllStudents());
         return mav;
     }
 
